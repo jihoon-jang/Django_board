@@ -77,11 +77,10 @@ WSGI_APPLICATION = 'board2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jejodb',
-        'USER': 'root',
+        'NAME': 'jigns153$board',
+        'USER': 'jigns153',
         'PASSWORD': 'jiwkd147',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': 'jigns153.mysql.pythonanywhere-services.com',
     }
 }
 
