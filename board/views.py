@@ -2,6 +2,8 @@ from django.shortcuts import render
 from board.models import Board
 from django.shortcuts import redirect
 from django.utils import timezone
+from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 def home(request):
@@ -28,13 +30,30 @@ def board_insert(request):
 
     if btitle != "":
         Board.objects.create(b_title=btitle, b_note=bnote, b_writer=bwriter, b_date=bdate)
-        return redirect('/board')
+        return redirect('/board_ajax')
+    else:
+        return redirect('/board_write')
+
+
+def board_insert_ajax(request):
+    btitle = request.GET['b_title']
+    bnote = request.GET['b_note']
+    bwriter = request.GET['b_writer']
+    bdate = timezone.now()
+
+    if btitle != "":
+        Board.objects.create(b_title=btitle, b_note=bnote, b_writer=bwriter, b_date=bdate)
+        return redirect('/board_ajax')
     else:
         return redirect('/board_write')
 
 
 def board_view(request):
     bno = request.GET['b_no']
+    rsData = Board.objects.filter(b_no=bno)
+    rsData.b_count += 1
+    rsData.save()
+
     rsDetail = Board.objects.filter(b_no=bno)
 
     return render(request, "board_view.html", {
@@ -83,3 +102,22 @@ def board_delete(request):
     Board.objects.get(b_no=bno).delete()
 
     return redirect('/board')
+
+
+def board_ajax(request):
+    rsBoard = Board.objects.all()
+
+    return render(request, "board_ajax.html", {
+        'rsBoard': rsBoard
+    })
+
+
+@csrf_exempt
+def board_deleteajax(request):
+    bno = request.GET['b_no']
+    Board.objects.get(b_no=bno).delete()
+
+    data={}
+    data['result_msg'] = '삭제되었습니다.'
+
+    return JsonResponse(data, content_type="application/json")
