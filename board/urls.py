@@ -13,7 +13,11 @@ urlpatterns = [
     path('board_edit', views.board_edit, name="board_edit"),
     path('board_update', views.board_update, name="board_update"),
     path('board_delete', views.board_delete, name="board_delete"),
+
     path('board_ajax', views.board_ajax, name="board_ajax"),
     path('board_deleteajax', views.board_deleteajax, name="board_deleteajax"),
+
+    path('portfolio', views.portfolio, name="portfolio"),
+    path('portfolio_detail', views.portfolio_detail, name="portfolio_detail"),
 
 ]

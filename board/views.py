@@ -1,3 +1,4 @@
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render
 from board.models import Board
 from django.shortcuts import redirect
@@ -50,7 +51,7 @@ def board_insert_ajax(request):
 
 def board_view(request):
     bno = request.GET['b_no']
-    rsData = Board.objects.filter(b_no=bno)
+    rsData = Board.objects.get(b_no=bno)
     rsData.b_count += 1
     rsData.save()
 
@@ -121,3 +122,19 @@ def board_deleteajax(request):
     data['result_msg'] = '삭제되었습니다.'
 
     return JsonResponse(data, content_type="application/json")
+
+
+def portfolio(request):
+    rsBoard = Board.objects.all()
+
+    return render(request, "portfolio.html", {
+        'rsBoard': rsBoard
+    })
+
+
+def portfolio_detail(request):
+    rsBoard = Board.objects.all()
+
+    return render(request, "portfolio_details.html", {
+        'rsBoard': rsBoard
+    })
