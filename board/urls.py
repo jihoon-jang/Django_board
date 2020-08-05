@@ -1,4 +1,3 @@
-from django.conf.urls import url, include
 from django.urls import path
 
 from . import views
@@ -17,7 +16,5 @@ urlpatterns = [
     path('board_ajax', views.board_ajax, name="board_ajax"),
     path('board_deleteajax', views.board_deleteajax, name="board_deleteajax"),
 
-    path('portfolio', views.portfolio, name="portfolio"),
-    path('portfolio_detail', views.portfolio_detail, name="portfolio_detail"),
 
 ]

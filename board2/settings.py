@@ -20,7 +20,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '6^o+@24qqxvxc^mqtvlp$8ph&_efv%&!(dudaw)$#chi#x^_#7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -76,25 +75,7 @@ WSGI_APPLICATION = 'board2.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'jejodb',
-        'USER': 'root',
-        'PASSWORD': 'jiwkd147',
-        'HOST': '127.0.0.1',
-        'PORT': '3306'
-    }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'jigns153$board',
-#         'USER': 'jigns153',
-#         'PASSWORD': 'jiwkd147',
-#         'HOST': 'jigns153.mysql.pythonanywhere-services.com',
-#     }
-# }
 
 
 # Password validation
