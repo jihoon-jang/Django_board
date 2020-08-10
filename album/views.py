@@ -40,7 +40,7 @@ def album_insert(request):
 
     name = fs.save(name_new + name_ext, uploaded_file)
 
-    rows = Album.objects.create(a_title=atitle, a_note=anote, a_type=atype, a_image=name, a_usage='1')
+    Album.objects.create(a_title=atitle, a_note=anote, a_type=atype, a_image=name, a_usage='1')
 
     return redirect('/album')
 
